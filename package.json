@@ -1,0 +1,22 @@
+{
+  "name": "xballoy.github.io",
+  "version": "1.0.0",
+  "description": "Xavier Balloy's Blog",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xballoy/xballoy.github.io.git"
+  },
+  "author": "Xavier Balloy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xballoy/xballoy.github.io/issues"
+  },
+  "homepage": "https://github.com/xballoy/xballoy.github.io#readme",
+  "devDependencies": {
+    "markdownlint-cli": "0.29.0"
+  },
+  "scripts": {
+    "lint": "yarn lint:markdown",
+    "lint:markdown": "markdownlint **/*.md --fix --ignore node_modules --ignore vendor"
+  }
+}

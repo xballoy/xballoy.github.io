@@ -1,0 +1,17 @@
+# Jekyll configuration
+excerpt_separator: <!--more-->
+theme: minima
+plugins:
+  - jekyll-feed
+
+# GitHub page configuration
+domain: xballoy.github.io
+url: https://xballoy.github.io
+
+# Site configuration
+title: Xavier Balloy
+description: >-
+  I write things about dev, mostly in English but sometimes in French.
+
+# minima configuration
+show_excerpts: true
