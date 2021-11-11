@@ -15,3 +15,5 @@ description: >-
 
 # minima configuration
 show_excerpts: true
+fathom_analytics:
+  site_id: XPSDARMZ
