@@ -13,6 +13,11 @@ layout: default
       {%- if page.author -%}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
       {%- endif -%}</p>
+    <p class="post-first-published">
+      {%- if page.first_published_site and page.first_published_link -%}
+        This article was first published on <a href="{{ page.first_published_link }}" target="_blank" rel="nofollow noopener">{{ page.first_published_site }}</a>.
+      {%- endif -%}
+    </p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">

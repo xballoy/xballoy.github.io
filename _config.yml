@@ -14,6 +14,9 @@ description: >-
   I write things about dev, mostly in English but sometimes in French.
 
 # minima configuration
+twitter_username: xballoy
+linkedin_username: xavierballoy
+github_username: xballoy
 show_excerpts: true
 fathom_analytics:
   site_id: XPSDARMZ
