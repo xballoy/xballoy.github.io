@@ -57,3 +57,18 @@ $ gem install bundler
 To see your modifications you just need to refresh the page. However, if you
 modify the `_config.yml` file you will need to stop the process and serve the
 website again.
+
+## Configuration
+
+### Enabling analytics (via Fathom)
+
+To activate [Fathom Analytics](https://usefathom.com/ref/2LQGOG) (using this is
+a affiliate link you will get $10 discount on your first invoice) add the
+following lines in `_config.yml`:
+
+```yml
+fathom_analytics:
+  site_id: ABCDEFG
+  # If you have a custom domain uncomment the following line
+  # custom_domain: https://llama.yoursite.com/script.js
+```
