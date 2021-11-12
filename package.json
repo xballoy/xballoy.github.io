@@ -1,7 +1,7 @@
 {
   "name": "xballoy.github.io",
   "version": "1.0.0",
-  "description": "Xavier Balloy's Blog",
+  "description": "Xavier Balloy Blog",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xballoy/xballoy.github.io.git"
