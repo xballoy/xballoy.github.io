@@ -17,6 +17,6 @@
   },
   "scripts": {
     "lint": "yarn lint:markdown",
-    "lint:markdown": "markdownlint **/*.md --fix --ignore node_modules --ignore vendor"
+    "lint:markdown": "markdownlint **/*.md --fix --ignore node_modules --ignore vendor --ignore _site"
   }
 }
