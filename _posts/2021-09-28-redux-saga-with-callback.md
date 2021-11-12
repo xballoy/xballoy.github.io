@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "How to use Redux-Saga effects within a callback"
-author: "Xavier Balloy"
+title: How to use Redux-Saga effects within a callback
+description: Learn how to use Redux-Saga effects within a callback with an example.
+author: Xavier Balloy
 first_published_site: Kumojin dev notes blog
 first_published_link: https://kumojin.github.io/2021/09/28/redux-saga-with-callback.html
 tags:

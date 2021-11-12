@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "How to avoid conditional in your code"
-author: "Xavier Balloy"
+title: How to avoid conditional in your code
+description: Learn how to use a map instead of a conditional in your code with an example.
+author: Xavier Balloy
 tags:
   - code retreat
   - java

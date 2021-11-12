@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "My Global Day of Code Retreat 2017"
-author: "Xavier Balloy"
+title: My Global Day of Code Retreat 2017
+description: Summary of all the iterations of Conway’s Game of Life we had at the Global Day of Code Retreat 2017.
+author: Xavier Balloy
 tags:
   - code retreat
   - kata

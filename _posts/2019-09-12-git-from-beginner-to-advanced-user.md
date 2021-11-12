@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Git: from beginner to advanced user"
-author: "Xavier Balloy"
+description: A journey with Git command line, learn how to master Git!
+author: Xavier Balloy
 first_published_site: Just-Tech-IT
 first_published_link: https://medium.com/just-tech-it-now/git-from-beginner-to-advanced-user-d81a8b7d20ce
 tags:

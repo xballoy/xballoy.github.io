@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "De retour de SoCraTes France 2019"
-author: "Xavier Balloy"
+lang: fr
+title: De retour de SoCraTes France 2019
+description: Mon retour sur SoCraTes France 2019, j'y parle de code review, mob programming et kata.
+author: Xavier Balloy
 first_published_site: Just-Tech-IT
 first_published_link: https://medium.com/just-tech-it-now/de-retour-de-socrates-france-2019-7753116b7a9
 tags:

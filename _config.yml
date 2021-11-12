@@ -9,6 +9,7 @@ domain: xballoy.github.io
 url: https://xballoy.github.io
 
 # Site configuration
+lang: en
 title: Xavier Balloy Dev Blog
 author: Xavier Balloy
 description: >-
