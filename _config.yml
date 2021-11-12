@@ -22,3 +22,4 @@ github_username: xballoy
 show_excerpts: true
 fathom_analytics:
   site_id: XPSDARMZ
+  custom_domain: https://plentiful-fountain.balloy.me/script.js
