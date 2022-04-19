@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "github-pages", "~> 225", group: :jekyll_plugins
+gem "github-pages", "~> 226", group: :jekyll_plugins
 gem "minima", "~> 2.5"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
