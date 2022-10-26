@@ -16,7 +16,7 @@
     "markdownlint-cli": "0.32.2"
   },
   "scripts": {
-    "lint": "yarn lint:markdown",
+    "lint": "npm run lint:markdown",
     "lint:markdown": "markdownlint **/*.md --fix --ignore node_modules --ignore vendor --ignore _site"
   }
 }

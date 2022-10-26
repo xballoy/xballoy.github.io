@@ -242,7 +242,7 @@ A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D      master
 ```
 
 The `git rebase master` will move the entire feature branch to begin on the tip
-of the master branch. But, instead of using a merge commit, rebasing *re-writes*
+of the master branch. But, instead of using a merge commit, rebasing _re-writes_
 the project history by creating a brand new commit for each commit in the
 original branch. It is a good practice to rebase your feature branch against
 develop to avoid merge conflicts and to simplify the pull request.
@@ -259,7 +259,7 @@ Benefits:
 - you can follow the tip of feature to the beginning of the project without any
   fork
 
-**Warning**: The golden rule of `git rebase` is to never use it on *public*
+**Warning**: The golden rule of `git rebase` is to never use it on _public_
 branches. So, before you run git rebase, always ask yourself, "Is anyone else
 looking at this branch?".
 
@@ -373,7 +373,7 @@ fb2f677 Feature A is done
 ac5db87 Previous commit
 ```
 
-Just do your changes, use `--fixup` and *voilà*!
+Just do your changes, use `--fixup` and _voilà_!
 
 ``` bash
 $ git commit --fixup fb2f677
