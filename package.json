@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/xballoy/xballoy.github.io#readme",
   "devDependencies": {
-    "markdownlint-cli": "0.36.0"
+    "markdownlint-cli": "0.37.0"
   },
   "scripts": {
     "lint": "npm run lint:markdown",
