@@ -275,8 +275,8 @@ GEM
     webrick (1.9.1)
 
 PLATFORMS
-  arm64-darwin-21
-  x86_64-linux
+  arm64-darwin
+  x86_64-linux-gnu
 
 DEPENDENCIES
   github-pages (~> 232)
@@ -284,7 +284,9 @@ DEPENDENCIES
   minima (~> 2.5)
   tzinfo (~> 2.0)
   tzinfo-data
-  wdm (~> 0.1.1)
+
+RUBY VERSION
+   ruby 3.4.5p51
 
 BUNDLED WITH
-   2.2.31
+   2.6.9
