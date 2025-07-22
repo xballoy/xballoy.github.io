@@ -656,21 +656,10 @@ commands.
 | Command      | Scope        | Use case                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |--------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | git reset    | Commit-level | Discard commits in a private branch or throws away uncommitted changes.<br>You can use the following options:<br> - `--soft`: use this when you made bad commits but the work's good and all you need to do is recommit it differently.<br> - `--mixed` (default option if you don't specify it): use this when you made bad commits but want to keep all the work you've done so you can fix it up and recommit. <br> -`--hard`: it will throw away your work by resetting the working copy, the index and the HEAD to the specified commit. |
-| git reset    | File-level   | Unstage a file. It is commonly used with HEAD to retrieve the last committed version of a file. The options `--soft`, `--mixed` and `--hard` do not have any effect. The index will  _
-
-always_be updated and the working copy_
-never_updated. | | git checkout | Commit-level | Useful for quickly inspecting
-an old version of your project but it will put you in a_
-detached_HEAD state. This can be dangerous if you start adding new commit
-because there is no way to get them back after switching to another branch. For
-this reason, you should always create a new branch before adding commits to a
-detached HEAD. | | git checkout | File-level | Discard changes in the working
-directory. Similar to `git reset` on a file except that it will update the
-working_
-directory_  instead of the index. | | git revert | Commit-level | Reverting
-undoes a commit by creating a new commits. This is a safe way to undo changes.
-Because it alters the existing commit history it should be used on public
-branches and `reset` on private branches. |
+| git reset    | File-level   | Unstage a file. It is commonly used with HEAD to retrieve the last committed version of a file. The options `--soft`, `--mixed` and `--hard` do not have any effect. The index will _always_ be updated and the working copy _never_ updated. |
+| git checkout | Commit-level | Useful for quickly inspecting an old version of your project but it will put you in a _detached HEAD_ state. This can be dangerous if you start adding new commit because there is no way to get them back after switching to another branch. For this reason, you should always create a new branch before adding commits to a detached HEAD. |
+| git checkout | File-level   | Discard changes in the working directory. Similar to `git reset` on a file except that it will update the working _directory_ instead of the index. |
+| git revert   | Commit-level | Reverting undoes a commit by creating a new commits. This is a safe way to undo changes. Because it alters the existing commit history it should be used on public branches and `reset` on private branches. |
 
 ## Best practices
 
