@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.4.6"
+ruby "3.4.7"
 
 gem "github-pages", "~> 232", group: :jekyll_plugins
 gem "minima", "~> 2.5"
