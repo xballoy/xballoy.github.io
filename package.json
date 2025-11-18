@@ -16,7 +16,8 @@
     "markdownlint-cli": "0.45.0"
   },
   "scripts": {
-    "lint": "npm run lint:markdown",
+    "lint": "pnpm lint:markdown",
     "lint:markdown": "markdownlint **/*.md --fix --ignore node_modules --ignore vendor --ignore _site"
-  }
+  },
+  "packageManager": "pnpm@10.21.0"
 }
