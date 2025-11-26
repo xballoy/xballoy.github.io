@@ -1,12 +1,14 @@
 ---
 layout: post
 title: "Git: from beginner to advanced user"
-description: A journey with Git command line, learn how to master Git!
+description: Complete Git command line guide covering setup, merging, rebasing, cherry-pick, and commit history management.
 author: Xavier Balloy
 first_published_site: Just-Tech-IT
 first_published_link: https://medium.com/just-tech-it-now/git-from-beginner-to-advanced-user-d81a8b7d20ce
 tags:
   - git
+  - version-control
+  - cli
 ---
 A journey with Git command line.
 <!--more-->
@@ -15,16 +17,15 @@ A journey with Git command line.
 
 ## Disclaimer
 
-You might not be used to it, but I will be using Git **command line** in this
-presentation.
+This article uses the Git **command line** exclusively.
 
 - The command line is the only place you can run _all_ Git commands.
 - If you know how to run the command-line version, you can figure out how to run
   the GUI version.
-- Your choice of graphical client is a matter of personal taste, all users will
+- Your choice of graphical client is a matter of personal taste; all users will
   have the command-line tools installed and available.
 
-Many users will use only a limited subset of Git commands but don’t forget that
+Many users will use only a limited subset of Git commands, but don't forget that
 Git is still under active development. You can find all the changelogs on
 [GitHub](https://github.com/git/git/tree/master/Documentation/RelNotes).
 
@@ -68,29 +69,24 @@ Configure your name and email that will be associated with your Git commits.
 
 ``` bash
 git config --global user.name "John Doe"
-git config --global user.email "john.doe@axa.fr"
+git config --global user.email "john.doe@example.com"
 ```
 
-**Tip:**: If you want to use different emails or have different credentials
-depending on the repository you use, you can use the following configuration.
-This can be useful if you have a personal and professional email associated with
-your GitHub account and you want to switch depending on the repository.
+**Tip:** If you want to use different email addresses depending on the repository, you
+can use the following configuration. This is useful if you have personal and
+professional email addresses associated with your GitHub account.
 
 ``` bash
 # Remove your email from the global configuration
 git config --global --unset user.email
 
-# Instruct Git to avoid trying to guess defaults for user.email and user.name, and instead retrieve the values only from the configuration.
+# Instruct Git to avoid guessing defaults for user.email and user.name
 git config --global user.useConfigOnly true
 
-# Tell Git to consider the "path" component of an http URL to be worth matching via external helpers.
-# This means that a credential stored for https://example.com/foo.git will not be used for https://example.com/bar.git.
-git config --global credential.useHttpPath true
-
-# Because you don't have configured your email you will have the following error when trying to commit your work:
+# Because you haven't configured your email globally, you will see this error when trying to commit:
 # fatal: no email was given and auto-detection is disabled
-# To solve it, just set your email in *this* repository
-git config user.email "john.doe@axa.fr"
+# To fix it, set your email in each repository:
+git config user.email "john.doe@example.com"
 ```
 
 To avoid problems in your diffs, configure Git to properly handle line endings.
@@ -102,18 +98,19 @@ git config --global core.autocrlf input
 git config --global core.autocrlf true
 ```
 
-Because you don’t want to type your username and password every time that Git
-communicates with the distant repository you should configure a credential
+Because you don't want to type your username and password every time Git
+communicates with the remote repository, you should configure a credential
 helper.
 
 ``` bash
 # Configure Git on OS X to use the osxkeychain credential helper
 git config --global credential.helper osxkeychain
-# Configure Git on Windows to use the wincred credential helper
-git config --global credential.helper wincred
+# Configure Git on Windows to use the credential manager
+# For Git for Windows 2.29+, use manager-core (or just manager in newer versions)
+git config --global credential.helper manager
 ```
 
-You might want to create a global .gitignore to exclude your OS files for
+You might want to create a global .gitignore to exclude your OS files, for
 example. You can use [gitignore.io](https://gitignore.io/) to generate your
 .gitignore file.
 
@@ -137,17 +134,28 @@ git config --global http.proxy [protocol://][user[:password]@]proxyhost[:port]
 #### git fetch
 
 The `git fetch` command downloads commits, files, and refs from a remote
-repository into your local repository. Git isolates fetched content from the
-existing local content, it does not affect on your local development work.
+repository into your local repository. Git isolates fetched content by updating
+remote-tracking branches, not your local branches or working directory.
 
 #### git pull
 
 The `git pull` command is used to fetch and download content from a remote
 repository and immediately update the local repository to match that content.
-The `git pull` command is a combination of two other commands, git fetch
-followed by git merge. You can use
-`git pull --rebase` if you want to use `git rebase` instead of
-`git merge`.
+The `git pull` command is a combination of two other commands, `git fetch`
+followed by `git merge`. You can use `git pull --rebase` if you want to use
+`git rebase` instead of `git merge`.
+
+**Note**: Since Git 2.27, Git will warn you if you haven't set a default
+reconciliation strategy. You can configure your preference with:
+
+``` bash
+# Use merge (default behavior)
+git config --global pull.rebase false
+# Use rebase
+git config --global pull.rebase true
+# Only fast-forward (fail if not possible)
+git config --global pull.ff only
+```
 
 #### git merge
 
@@ -162,11 +170,10 @@ Assume the following history exists and the current branch is `master`:
 A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D      master
 ```
 
-Then `git merge feature` will replay the changes made on the feature branch
-since it diverged from master (`B`) until its current commit
-(`G`) on top of `master`, and record the result in a new commit along with the
-names of the two-parent commits and a log message from the user describing the
-changes.
+Then `git merge feature` will create a new merge commit that combines the
+histories of both branches. This merge commit (`H`) has two parents: the current
+tip of `master` (`D`) and the tip of `feature` (`G`). Git automatically
+determines how to combine the changes from both branches.
 
 ```text
            E ─ ─ ─ F ─ ─ ─ G     feature
@@ -214,23 +221,24 @@ Assume the following history exists and the current branch is `master`:
 A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D      master
 ```
 
-Then `git merge feature --squash` will take all the commits from
-`feature`, squash them into 1 commit (`H`) and then merge it with your master
-branch.
+Then `git merge feature --squash` will take all the commits from `feature`,
+squash them into staged changes, and you need to create a new commit (`H`).
+Unlike a regular merge, `H` has no reference to the feature branch commits—it's
+a completely new commit containing all the changes.
 
 ```text
-           E ─ ─ ─ F ─ ─ ─ G     feature
-         ╱
-A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D ─ ─ H  master
+           E ─ ─ ─ F ─ ─ ─ G        feature (unchanged, no connection to H)
+
+A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D ─ ─ ─ H   master (H contains E+F+G changes)
 ```
 
-**Tip**: When squash merging, it’s a good practice to delete the source branch.
-This prevents confusion as the feature branch itself does not have a commit that
-merges it into the merged branch.
+**Tip**: When squash merging, it's a good practice to delete the source branch.
+Since `H` has no parent relationship to the feature branch, keeping the feature
+branch around can cause confusion—Git won't recognize it as merged.
 
 #### git rebase
 
-While `git rebase` solves the same problem as `git merge` it does work
+While `git rebase` solves the same problem as `git merge`, it works
 differently.
 
 Assume the following history exists and the current branch is `feature`:
@@ -241,16 +249,16 @@ Assume the following history exists and the current branch is `feature`:
 A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D      master
 ```
 
-The `git rebase master` will move the entire feature branch to begin on the tip
+`git rebase master` will move the entire feature branch to begin on the tip
 of the master branch. But, instead of using a merge commit, rebasing _re-writes_
 the project history by creating a brand new commit for each commit in the
 original branch. It is a good practice to rebase your feature branch against
 develop to avoid merge conflicts and to simplify the pull request.
 
 ```text
-                          E' ─ ─ ─F' ─ ─ ─G'   feature
+                          E' ─ ─ ─ F' ─ ─ ─ G'   feature
                          ╱
-A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D                      master
+A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D                        master
 ```
 
 Benefits:
@@ -260,8 +268,8 @@ Benefits:
   fork
 
 **Warning**: The golden rule of `git rebase` is to never use it on _public_
-branches. So, before you run git rebase, always ask yourself, "Is anyone else
-looking at this branch?".
+branches. So, before you run `git rebase`, always ask yourself, "Is anyone else
+looking at this branch?"
 
 ## Advanced user
 
@@ -278,34 +286,35 @@ Assume the following history exists and the current branch is `feature`.
 A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D ─ ─ ─ E   master
 ```
 
-Let’s say you want to apply **only** the commit C but not D. (Too) many people
+Let's say you want to apply **only** commit C but not D. Too many people
 will just manually apply the changes that were made on top of their branch. The
-right way to do so would be to use `cherry-pick`.
+right way to do this is to use `cherry-pick`.
 
 ``` bash
 $ git branch --show-current
 feature
 
 $ git log --oneline
-H Add tests
-G Implement feature
-F Init feature
+a1b2c3d Add tests
+b2c3d4e Implement feature
+c3d4e5f Init feature
 
-$ git cherry-pick C
+# Use the actual SHA of commit C from master
+$ git cherry-pick <sha-of-C>
 
 $ git log --oneline
-C Important fix
-H Add tests
-G Implement feature
-F Init feature
+f6g7h8i Important fix        # New commit with changes from C
+a1b2c3d Add tests
+b2c3d4e Implement feature
+c3d4e5f Init feature
 ```
 
-Now our history is:
+Now our history is (note that `C'` is a new commit with a different SHA than `C`):
 
 ```text
-           F ─ ─ ─ G ─ ─ ─ H ─ ─ ─ C   feature
+           F ─ ─ ─ G ─ ─ ─ H ─ ─ ─ C'  feature
          ╱
-A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D ─ ─ ─ E       master
+A ─ ─ ─ B ─ ─ ─ C ─ ─ ─ D ─ ─ ─ E      master
 ```
 
 **Tip**: You can pass a list of commits to `cherry-pick`.
@@ -359,12 +368,12 @@ ac5db87 Previous commit
 
 #### Changing older commit
 
-The `git commit --fixup` command, like the `git commit --amend`, allows you to
-edit a single commit but this time it doesn’t have to be the last one. It can be
+The `git commit --fixup` command, like `git commit --amend`, allows you to
+edit a single commit, but this time it doesn't have to be the last one. It can be
 any commit!
 
-After some time you realise you made a typo, forgot to include a file or
-whatever in an old commit "Feature A is done".
+After some time, you realize you made a typo, forgot to include a file, or
+something similar in an old commit "Feature A is done".
 
 ``` bash
 $ git log --oneline
@@ -373,7 +382,7 @@ fb2f677 Feature A is done
 ac5db87 Previous commit
 ```
 
-Just do your changes, use `--fixup` and _voilà_!
+Make your changes, use `--fixup`, and _voilà_!
 
 ``` bash
 $ git commit --fixup fb2f677
@@ -391,7 +400,6 @@ Now you want to clean your branch: use `--autosquash` option!
 $ git rebase -i --autosquash ac5db87
 pick fb2f677 Feature A is done
 fixup c5069d5 fixup! Feature A is done
-fixup c9e138f fixup! Feature A is done
 pick 733e2ff Feature B is done
 
 $ git log --oneline
@@ -400,7 +408,7 @@ ff4de2a Feature B is done
 ac5db87 Previous commit
 ```
 
-**Tip**: You can add this alias in you .gitconfig to make it even simpler!
+**Tip**: You can add this alias to your .gitconfig to make it even simpler!
 
 ``` bash
 [alias]
@@ -412,13 +420,13 @@ ac5db87 Previous commit
 
 #### Changing older or multiple commits
 
-Interactive rebasing can be used for changing commits in many way such as
+Interactive rebasing can be used for changing commits in many ways such as
 editing, deleting and squashing. To start an interactive rebase you need to use
-the SHA-1 or index of the commit that **immediately precedes** the last commit
-you want to modify.
+the SHA-1 of the commit **before** the **oldest** (first) commit you want to
+modify. You can use `~` to reference the parent commit.
 
-The `git rebase -i` command you show you the commit from the older to the newest
-and will apply the commit in this order when rebasing.
+The `git rebase -i` command will show you commits from oldest to newest and will
+apply them in this order when rebasing.
 
 ``` bash
 $ git log --oneline
@@ -463,16 +471,25 @@ pick fe0a967 5
 ```
 
 With `pick` you can change the order of the commits. For example, we can switch
-3 and 4:
+3 and 4 by reordering the lines in the editor:
 
 ``` bash
 $ git rebase -i 57b5a07~
+# Original order shown in editor:
 pick 57b5a07 1
 pick 055610e 2
 pick 6a59879 3
 pick 228399c 4
 pick fe0a967 5
 
+# Change to (swap lines for 3 and 4):
+pick 57b5a07 1
+pick 055610e 2
+pick 228399c 4
+pick 6a59879 3
+pick fe0a967 5
+
+# After saving and closing the editor:
 $ git log --oneline
 bf45260 5
 6df345c 3
@@ -486,13 +503,14 @@ to "A new message for 2":
 
 ``` bash
 $ git rebase -i 57b5a07~
+# Change 'pick' to 'reword' (or 'r') for commit 2:
 pick 57b5a07 1
-pick 055610e 2
+reword 055610e 2
 pick 6a59879 3
 pick 228399c 4
 pick fe0a967 5
 
-# Save your new message
+# Git will open your editor to change the message for commit 2
 
 $ git log --oneline
 bf45260 5
@@ -502,7 +520,7 @@ bf45260 5
 57b5a07 1
 ```
 
-`edit` will allow you to edit a commit: making change, adding new things to it
+`edit` will allow you to edit a commit: making changes, adding new things to it,
 or splitting it into several commits.
 
 ``` bash
@@ -573,29 +591,31 @@ bf45260 5
 
 Good to know:
 
-- `git rebase` will change the SHA-1 of your commits so if you already pushed
-  your branch you’ll need to do a `git push -f`.
-- During the `git rebase` Git will replay the commit from bottom to top (in the
+- `git rebase` will change the SHA-1 of your commits, so if you already pushed
+  your branch, you'll need to do a `git push -f`.
+- During `git rebase`, Git will replay the commits from bottom to top (in the
   order they were created).
-- You can of course mix multiple commands: reword a commit message, squash
-  several commits…
+- You can, of course, mix multiple commands: reword a commit message, squash
+  several commits, etc.
 
 ### Understanding the staging area
 
 #### Saving files
 
-Git keeps copies of your source tree in several locations locally:
+Git keeps track of your source tree in several locations locally:
 
 - Working copy: the directory tree of files that you see and edit.
 - Index (staging area): a single, large, binary file in
   `<baseOfRepo>/.git/index`, which lists all files in the current branch, their
-  sha1 checksums, timestamps and the file name — it is not another directory
+  SHA-1 checksums, timestamps and the file name — it is not another directory
   with a copy of files in it.
-- HEAD: a hidden directory (`.git`) including an `objects` directory containing
-  all versions of every file in the repository (local branches and copies of
-  remote branches) as a compressed "blob" file.
+- HEAD: a reference (pointer) to the current commit, stored in `.git/HEAD`. It
+  usually points to a branch name, which in turn points to a commit.
+- Object store: the `.git/objects` directory containing all versions of every
+  file in the repository as compressed "blob" files, along with commits and
+  trees.
 
-Suppose the following state: where oldFile.txt is already committed and we have
+Suppose the following state, where oldFile.txt is already committed and we have
 a newFile.txt.
 
 ```text
@@ -606,8 +626,8 @@ a newFile.txt.
 +----------------+                    +----------------+                    +----------------+
 ```
 
-When using `git add -u .` only the changed files known in the index are updated.
-All new changes remain in the workspace.
+When using `git add -u .` only tracked files that have changed are staged.
+Untracked files (like newFile.txt) remain only in the working directory.
 
 ```text
 +----------------+                    +----------------+                    +----------------+
@@ -649,24 +669,26 @@ Using `git reset` will remove oldFile.txt (V2) from the index.
 
 #### Undo changes
 
-There are three tools to undo changes `git reset`, `git checkout` and
-`git revert`. The following table sums up the common use cases for these
-commands.
+There are several tools to undo changes: `git reset`, `git checkout`,
+`git revert`, and since Git 2.23, `git restore` and `git switch`. The following
+table sums up the common use cases for these commands.
 
-| Command      | Scope        | Use case                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|--------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| git reset    | Commit-level | Discard commits in a private branch or throws away uncommitted changes.<br>You can use the following options:<br> - `--soft`: use this when you made bad commits but the work's good and all you need to do is recommit it differently.<br> - `--mixed` (default option if you don't specify it): use this when you made bad commits but want to keep all the work you've done so you can fix it up and recommit. <br> -`--hard`: it will throw away your work by resetting the working copy, the index and the HEAD to the specified commit. |
-| git reset    | File-level   | Unstage a file. It is commonly used with HEAD to retrieve the last committed version of a file. The options `--soft`, `--mixed` and `--hard` do not have any effect. The index will _always_ be updated and the working copy _never_ updated.                                                                                                                                                                                                                                                                                                 |
-| git checkout | Commit-level | Useful for quickly inspecting an old version of your project but it will put you in a _detached HEAD_ state. This can be dangerous if you start adding new commit because there is no way to get them back after switching to another branch. For this reason, you should always create a new branch before adding commits to a detached HEAD.                                                                                                                                                                                                |
-| git checkout | File-level   | Discard changes in the working directory. Similar to `git reset` on a file except that it will update the working _directory_ instead of the index.                                                                                                                                                                                                                                                                                                                                                                                           |
-| git revert   | Commit-level | Reverting undoes a commit by creating a new commits. This is a safe way to undo changes. Because it alters the existing commit history it should be used on public branches and `reset` on private branches.                                                                                                                                                                                                                                                                                                                                  |
+| Command      | Scope        | Use case                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|--------------|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| git reset    | Commit-level | Discard commits in a private branch or throw away uncommitted changes.<br>You can use the following options:<br> - `--soft`: use this when you made bad commits but the work's good and all you need to do is recommit it differently.<br> - `--mixed` (default option if you don't specify it): use this when you made bad commits but want to keep all the work you've done so you can fix it up and recommit. <br> -`--hard`: it will throw away your work by resetting the working copy, the index and the HEAD to the specified commit. |
+| git reset    | File-level   | Unstage a file. It is commonly used with HEAD to retrieve the last committed version of a file. The options `--soft`, `--mixed` and `--hard` are ignored when a path is specified. The index will _always_ be updated and the working copy _never_ updated.                                                                                                                                                                                                                                                                                  |
+| git checkout | Commit-level | Useful for quickly inspecting an old version of your project but it will put you in a _detached HEAD_ state. This can be dangerous if you start adding new commit because there is no way to get them back after switching to another branch. For this reason, you should always create a new branch before adding commits to a detached HEAD. **Note**: prefer `git switch` for switching branches (Git 2.23+).                                                                                                                             |
+| git checkout | File-level   | Discard changes in the working directory. Similar to `git reset` on a file except that it will update the working _directory_ instead of the index. **Note**: prefer `git restore` for restoring files (Git 2.23+).                                                                                                                                                                                                                                                                                                                          |
+| git restore  | File-level   | (Git 2.23+) Restore working tree files. Use `git restore <file>` to discard changes in working directory, or `git restore --staged <file>` to unstage. This command replaces `git checkout -- <file>` with clearer semantics.                                                                                                                                                                                                                                                                                                                |
+| git switch   | Commit-level | (Git 2.23+) Switch branches. Use `git switch <branch>` to switch, or `git switch -c <branch>` to create and switch. This command replaces `git checkout <branch>` with clearer semantics.                                                                                                                                                                                                                                                                                                                                                    |
+| git revert   | Commit-level | Reverting undoes a commit by creating a new commit. This is a safe way to undo changes. Because it doesn't alter existing commit history, it should be used on public branches; use `reset` on private branches.                                                                                                                                                                                                                                                                                                                             |
 
 ## Best practices
 
 ### Define the editor Git uses
 
-I know that you love `vi` but I’m sure you prefer Visual Studio Code to write
-your commit messages, merge or compare a diff.
+I know that you love `vi`, but I'm sure you prefer Visual Studio Code to write
+your commit messages, merge, or compare a diff.
 
 ``` bash
 # Set the editor Git will always use to edit messages
@@ -682,31 +704,33 @@ git config --global difftool.vscode.cmd "code --wait --diff $LOCAL $REMOTE"
 ### Git flow
 
 Git flow is a collection of Git extensions to provide high-level repository
-operations. It will help you to normalize your branch name across your team.
+operations. It will help you normalize your branch names across your team.
 
-**Note**: git-flow is installed **locally**, everyone has to install and
-configure it.
+**Note**: git-flow is installed **locally**; everyone has to install and
+configure it. The original nvie/gitflow is unmaintained; consider using the
+actively maintained [git-flow-avh](https://github.com/petervanderdoes/gitflow-avh)
+fork instead.
 
 #### Install Git flow
 
 ##### On Windows
 
-The easiest way is to install Git flow on Windows is from a
-[Cygwin](http://www.cygwin.com/) shell:
+Install git-flow-avh using [Chocolatey](https://chocolatey.org/):
 
 ``` bash
-# https://github.com/nvie/gitflow/wiki/Windows
-wget -q -O - --no-check-certificate https://github.com/nvie/gitflow/raw/develop/contrib/gitflow-installer.sh | bash
+choco install git-flow-avh
 ```
+
+Or via [Git for Windows](https://gitforwindows.org/) which includes git-flow.
 
 ##### On Mac OS X
 
-The easiest way is to install Git flow on a Mac is via
+The easiest way to install Git flow on a Mac is via
 [Homebrew](https://brew.sh/):
 
 ``` bash
-# https://github.com/nvie/gitflow/wiki/Mac-OS-X
-brew install git-flow
+# Install the maintained AVH edition
+brew install git-flow-avh
 ```
 
 #### Useful Git flow commands
@@ -854,7 +878,6 @@ or two newlines. The rest of the commit message is then used for this.
 - [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
 - [Git Commit Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines)
 - [Git flow](https://github.com/nvie/gitflow)
-- [What’s the difference between HEAD, working tree and index, in Git?](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git)
-- [In plain English, what does “git reset” do?](https://stackoverflow.com/questions/2530060/in-plain-english-what-does-git-reset-do)
-- AXA internal training: Git basis
-- AXA internal training: Git rebase & stash
+- [Git flow AVH Edition](https://github.com/petervanderdoes/gitflow-avh)
+- [What's the difference between HEAD, working tree and index, in Git?](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git)
+- [In plain English, what does "git reset" do?](https://stackoverflow.com/questions/2530060/in-plain-english-what-does-git-reset-do)
