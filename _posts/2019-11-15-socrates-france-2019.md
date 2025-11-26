@@ -2,14 +2,14 @@
 layout: post
 lang: fr
 title: De retour de SoCraTes France 2019
-description: Mon retour sur SoCraTes France 2019, j'y parle de code review, mob programming et kata.
+description: "Retour sur SoCraTes France 2019 : revues de code, pair et mob programming, TCR, fish bowl et katas pour améliorer ses pratiques de développement logiciel."
 author: Xavier Balloy
 first_published_site: Just-Tech-IT
 first_published_link: https://medium.com/just-tech-it-now/de-retour-de-socrates-france-2019-7753116b7a9
 tags:
-  - code retreat
-  - kata
   - software craftsmanship
+  - mob programming
+  - TDD
 ---
 Du 17 au 20 octobre avait lieu un des événements incontournables autour du
 mouvement _software craftsmanship_ (artisanat logiciel) en France. SoCraTes-FR
@@ -17,16 +17,14 @@ se définit comme une non-conférence, en effet, il s’agit plus d’une retrai
 d’une conférence.
 <!--more-->
 
-![Le Château de Massillan](/assets/2019-11-15-socrates-france-2019-1.jpeg)
-Le Château de Massillan où a eu lieu SoCraTes-FR 2019
+![Le Château de Massillan où a eu lieu SoCraTes-FR 2019](/assets/2019-11-15-socrates-france-2019-1.jpeg)
 
 L’agenda, notamment, n’est pas connu à l’avance, mais se constitue chaque matin
 par les (très nombreuses) propositions d’ateliers que chacun est encouragé à
 proposer. L’agenda du 18 octobre, difficile de choisir avec tant de
 propositions !
 
-![L’agenda du 18 octobre](/assets/2019-11-15-socrates-france-2019-2.jpeg)
-L’agenda du 18 octobre, difficile de choisir avec tant de propositions !
+![L'agenda du 18 octobre, difficile de choisir avec tant de propositions !](/assets/2019-11-15-socrates-france-2019-2.jpeg)
 
 La qualité logicielle fait partie de l’ADN d’AXA, c’est donc naturellement que
 nous sponsorisions l’événement et envoyons nos développeurs. J’ai eu la chance
@@ -60,8 +58,8 @@ tendance à faire plus confiance à une personne qui travaille depuis longtemps
 dans l’équipe et qui fait moins d’erreurs par exemple.
 
 En partant de ce constat, certaines entreprises ont choisi de ne plus faire de
-revues de code, mais de faire beaucoup plus de _pair programming_ et de mob
-programming.
+revues de code, mais de faire beaucoup plus de _pair programming_ et de _mob
+programming_.
 
 ### Le pair programming
 
@@ -76,7 +74,7 @@ _pull requests_.
 Ces derniers sont contre-productifs : on relit plusieurs fois le même code, les
 développements n’avancent pas et le développeur pourrait être frustré ou prendre
 personnellement les remarques. Cette phase de _pair programming_ terminée, qui
-peut-être assimilé à du mentorat et dure plusieurs semaines, il est possible de
+peut être assimilée à du mentorat et dure plusieurs semaines, il est possible de
 faire confiance à ces personnes et de ne plus relire leur code (ou pas
 entièrement).
 
@@ -85,19 +83,19 @@ entièrement).
 Le _mob programming_ est similaire au _pair programming_ sauf que toute l’équipe
 travaille sur la même fonctionnalité ! L'un des principaux avantages est que
 toute l’équipe partage la connaissance fonctionnelle et la propriété du code. On
-n’entendra plus dire : “Ce n’est pas mon code / bug, c’est celui de Paul.” ou
+n'entendra plus dire : "Ce n'est pas mon code/bug, c'est celui de Paul." ou
 “Qui a travaillé sur cette fonctionnalité ?”. D’autre part comme le code est
 écrit de manière collaborative il est de meilleure qualité et il n’y a plus
 besoin de le relire.
 
 ![mob programming](/assets/2019-11-15-socrates-france-2019-3.png)
-Faire du _mob programming_ c’est comme faire du pair programming puissance n
+Faire du _mob programming_ c'est comme faire du _pair programming_ puissance n
 donc avoir du code pérenne. — Quelqu’un lors d’un échange à SoCraTes
 
 ## Katas
 
 Lors de cet événement, j’ai pratiqué plusieurs katas qui m’ont permis de
-découvrir un nouveau langage (Haskel) et des nouvelles façons de coder. Un kata
+découvrir un nouveau langage (Haskell) et des nouvelles façons de coder. Un kata
 de code est un exercice de développement qui permet de perfectionner ses
 compétences à travers la pratique et la répétition.
 
@@ -109,8 +107,8 @@ Si cela vous intéresse, j’ai pratiqué les katas suivants :
 
 ### TCR à la place de TDD
 
-J’ai eu l’occasion d’appliquer TCR, un acronyme pour test && _commit_ || _
-revert_. Il s’agit d’une méthode de programmation proposée
+J'ai eu l'occasion d'appliquer TCR, un acronyme pour test && _commit_ ||
+_revert_. Il s’agit d’une méthode de programmation proposée
 par [Kent Beck](https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864)
 (l’inventeur du TDD). Son principe est que lorsque l’on exécute les tests, s’ils
 ne passent pas, on _revert_ le code !
@@ -132,13 +130,13 @@ du test (on parie qu’il sera vert, on commit) avant de faire un refactoring
 
 ### Fish bowl mob programming
 
-Avant SoCraTes j’avais entendu parler de _mob programming_ mais n’avais jamais
+Avant SoCraTes, j'avais entendu parler de _mob programming_ mais n'avais jamais
 pratiqué. Lors d’un kata, nous avons essayé une technique de facilitation
 spécifique pour faire du _mob programming_ : le fish bowl.
 
 Son fonctionnement est assez simple :
 
-- Un pilote a le clavier. Il ne fait **que** coder et ne prend pas de décisions
+- Un pilote a le clavier. Il ne fait **que** coder et ne prend pas de décisions.
 - Un navigateur dit au pilote ce qu’il faut faire. Il est le **seul** à parler.
 - Une chaise est libre pour poser des **questions**. Mais attention, uniquement
   des questions pour mieux comprendre le code (on ne comprend pas une syntaxe
@@ -149,7 +147,7 @@ Son fonctionnement est assez simple :
   place du pilote ou du navigateur à n’importe quel moment.
 
 J’ai beaucoup aimé cette technique pour faire du _mob programming_ car elle
-évite la cacophonie qui peut régner lorsque l’on essaye de tous coder en même
+évite la cacophonie qui peut régner lorsque l'on essaye de tout coder en même
 temps. Dans ces cas-là le pilote ne sait pas quoi faire et il est difficile
 d’avancer.
 
