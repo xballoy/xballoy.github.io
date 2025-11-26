@@ -60,7 +60,7 @@ define the coordinates of the cells without using `int`. We cheated and
 used `Integer`, that’s Java after all.
 
 During the debriefing, we shared our difficulties and someone suggested defining
-the neighbors relative to each other. Using top, right, bottom and left. I
+the neighbors relative to each other. Using top, right, bottom, and left. I
 think it's a great idea because you can chain them and it is infinite (by
 using an `int` I have a limit, a huge one, but still a limit).
 
@@ -125,7 +125,7 @@ passionate people, I had fun and I learned new things that I'll try to apply in 
 everyday job.
 
 - Communicating through the code is hard and sometimes a meaningful name for me
-  might have no sense to someone else. Next time I do a code review I will
+  might not make sense to someone else. Next time I do a code review I will
   challenge even more the name of the methods/variables.
 - I will try to write more functional code: it’s harder to write when you’re not
   used to but it’s really simple to test.

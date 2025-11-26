@@ -22,8 +22,8 @@ In my implementation of Conway’s Game of Life, I have the following method to
 know if a cell will be `DEAD` or `ALIVE` in the next iteration.
 
 ```java
-public Status newStatusFor(int neighboursCount) {
-  if (neighboursCount < 2 || neighboursCount > 3) {
+public Status newStatusFor(int neighborsCount) {
+  if (neighborsCount < 2 || neighborsCount > 3) {
     return Status.DEAD;
   }
   return Status.ALIVE;
@@ -31,10 +31,10 @@ public Status newStatusFor(int neighboursCount) {
 ```
 
 Because we have a small finite number of possibilities (a cell has up to 8
-neighbours), I did as follows:
+neighbors), I did as follows:
 
 ```java
-private static ImmutableMap<Integer, Status> neighboursRules = ImmutableMap.<Integer, Status>builder()
+private static ImmutableMap<Integer, Status> neighborsRules = ImmutableMap.<Integer, Status>builder()
   .put(0, Status.DEAD)
   .put(1, Status.DEAD)
   .put(2, Status.ALIVE)
@@ -46,8 +46,8 @@ private static ImmutableMap<Integer, Status> neighboursRules = ImmutableMap.<Int
   .put(8, Status.DEAD)
   .build();
 
-public Status newStatusFor(int neighboursCount) {
-  return neighboursRules.get(neighboursCount);
+public Status newStatusFor(int neighborsCount) {
+  return neighborsRules.get(neighborsCount);
 }
 ```
 
