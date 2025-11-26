@@ -1,13 +1,16 @@
 ---
 layout: post
 title: My Global Day of Code Retreat 2017
-description: Summary of all the iterations of Conway’s Game of Life we had at the Global Day of Code Retreat 2017.
+description: What I learned about TDD, functional programming, and communication at Code Retreat 2017.
 author: Xavier Balloy
 tags:
   - code retreat
   - kata
+  - tdd
+  - pair programming
+  - conways game of life
 ---
-My takeout on the Global Day of Code Retreat 2017.
+My takeaway from the Global Day of Code Retreat 2017.
 
 <!--more-->
 ![Picture of the Global Day of Code Retreat at AXA](/assets/2017-11-19-my-global-day-of-code-retreat-2017-1.jpeg)
@@ -30,13 +33,12 @@ and IDE) in ping-pong programming (using TDD of course) with a different person.
 
 ## Conway’s Game of Life
 
-The rules of Conway’s Game of Life are simple. In an infinite orthogonal 2
-dimensions world, the following rules apply:
+The rules of Conway's Game of Life are simple. In an infinite orthogonal 2-dimensional world, the following rules apply:
 
-- When an alive cell has less than 2 neighbours it dies.
-- When an alive cell has 2 or 3 neighbours it stays alive.
-- When an alive cell has more than 3 neighbours it dies.
-- When a dead cell has 3 neighbours it becomes alive.
+- When an alive cell has fewer than 2 neighbors it dies.
+- When an alive cell has 2 or 3 neighbors it stays alive.
+- When an alive cell has more than 3 neighbors it dies.
+- When a dead cell has 3 neighbors it becomes alive.
 
 ### 1st iteration
 
@@ -58,22 +60,22 @@ define the coordinates of the cells without using `int`. We cheated and
 used `Integer`, that’s Java after all.
 
 During the debriefing, we shared our difficulties and someone suggested defining
-the neighbours relative to each other. Using top, right, bottom and left. I
-think it’s a great idea because you can chain them and you are infinite (by
-using an `int` I have a limit, a huge one but one).
+the neighbors relative to each other. Using top, right, bottom and left. I
+think it's a great idea because you can chain them and it is infinite (by
+using an `int` I have a limit, a huge one, but still a limit).
 
 ### 3rd iteration
 
 Constraint: no conditionals.
 
 One of the most difficult constraints for me… How to remove the if in the method
-who checks if a cell is dead or alive?! Finally, we used a
+that checks if a cell is dead or alive?! Finally, we
 used `Map<Integer, Function>` to get the rule corresponding to the number of
-neighbours. I don’t usually use this pattern but it improves the readability of
+neighbors. I don’t usually use this pattern but it improves the readability of
 the code and every Function has only one role (the S in SOLID)!
 
 However, it was quite hard to come to this idea and we should have written the
-code with conditionals then refactor it. I have no idea why we didn’t use the
+code with conditionals then refactored it. I have no idea why we didn't use the
 refactoring phase of TDD to do it.
 
 ### 4th iteration
@@ -82,12 +84,12 @@ Constraint: not only object-oriented development (Functions & Types over
 classes. Purity over mutability. Composition over inheritance. Higher-order
 functions over method dispatch. Options over nulls).
 
-This was the hardest constraint. I’m not used to functional programming so I
-needed to change the way I think. Which is kind of hard in 45 minutes… Even
+This was the hardest constraint. I'm not used to functional programming so I
+needed to change the way I think, which is hard in 45 minutes… Even
 writing the first test wasn’t easy.
 
 Finally, we wrote specific functions for every functionality (one for each rule,
-one to count the number of neighbours…) then compose them.
+one to count the number of neighbors…) then composed them.
 
 ### 5th iteration
 
@@ -96,7 +98,7 @@ Constraint: mute programming.
 I thought it would be an easy one because we both knew the problem and already
 solved it a few times. However, it wasn’t so easy because it’s hard to tell the
 intention of a method or a variable. We had to rename them a couple of times to
-know what it mean for both of us. This time writing the rules first wasn’t the
+know what it meant for both of us. This time writing the rules first wasn't the
 best idea because once written it was hard to continue and to explain (without
 speaking or writing) what we wanted to do! Communication is really important in
 a team!
@@ -105,7 +107,7 @@ a team!
 
 Constraints: TDD as if you meant it & mob programming.
 
-The funniest! We were disciplined enough to listen to each other so it didn’t
+The most fun! We were disciplined enough to listen to each other so it didn't
 end up in a big mess. But it was hard for some people to talk and give their
 point of view. When the group is working well sometimes you don’t want to slow
 it down. However, it could be interesting to have a higher vision of what we are
@@ -116,10 +118,10 @@ At first, it looked absurd because it was very far from the code we all produced
 during the day. But it’s a good way to experiment with things and finally design
 our application in a new way.
 
-## What did I learn
+## What did I learn?
 
-This day was very interesting and I’m glad I spent my Saturday there. I met
-passionate people, I had fun and I learn new things that I’ll try to apply in my
+This day was very interesting and I'm glad I spent my Saturday there. I met
+passionate people, I had fun and I learned new things that I'll try to apply in my
 everyday job.
 
 - Communicating through the code is hard and sometimes a meaningful name for me
