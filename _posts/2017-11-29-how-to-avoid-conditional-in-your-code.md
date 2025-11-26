@@ -1,15 +1,16 @@
 ---
 layout: post
-title: How to avoid conditional in your code
-description: Learn how to use a map instead of a conditional in your code with an example.
+title: How to avoid conditionals in your code
+description: Use a Map instead of if/else to handle finite conditions in Java.
 author: Xavier Balloy
 tags:
-  - code retreat
   - java
+  - clean-code
+  - refactoring
   - kata
 ---
-A couple of weeks ago I’ve been asked to share how I avoided `if` in my code at
-the Global Day of Code Retreat 2017.
+A couple of weeks ago I was asked to share how I avoided `if` in my code at
+the Global Day of Coderetreat 2017.
 <!--more-->
 
 **DISCLAIMER**: this solution was produced during a kata where we forced
@@ -22,7 +23,7 @@ know if a cell will be `DEAD` or `ALIVE` in the next iteration.
 
 ```java
 public Status newStatusFor(int neighboursCount) {
-  if (neighboursCount< 2||neighboursCount>3) {
+  if (neighboursCount < 2 || neighboursCount > 3) {
     return Status.DEAD;
   }
   return Status.ALIVE;
@@ -30,22 +31,22 @@ public Status newStatusFor(int neighboursCount) {
 ```
 
 Because we have a small finite number of possibilities (a cell has up to 8
-neighbours) I did as follow:
+neighbours), I did as follows:
 
 ```java
-private static ImmutableMap<Integer, Status> neighboursRules=ImmutableMap.<Integer, Status>builder()
-  .put(0,Status.DEAD)
-  .put(1,Status.DEAD)
-  .put(2,Status.ALIVE)
-  .put(3,Status.ALIVE)
-  .put(4,Status.DEAD)
-  .put(5,Status.DEAD)
-  .put(6,Status.DEAD)
-  .put(7,Status.DEAD)
-  .put(8,Status.DEAD)
+private static ImmutableMap<Integer, Status> neighboursRules = ImmutableMap.<Integer, Status>builder()
+  .put(0, Status.DEAD)
+  .put(1, Status.DEAD)
+  .put(2, Status.ALIVE)
+  .put(3, Status.ALIVE)
+  .put(4, Status.DEAD)
+  .put(5, Status.DEAD)
+  .put(6, Status.DEAD)
+  .put(7, Status.DEAD)
+  .put(8, Status.DEAD)
   .build();
 
-public VitalStatus newStatusFor(int neighboursCount) {
+public Status newStatusFor(int neighboursCount) {
   return neighboursRules.get(neighboursCount);
 }
 ```
