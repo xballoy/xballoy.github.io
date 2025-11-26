@@ -1,8 +1,7 @@
 ---
 layout: post
-lang: fr
-title: De retour de SoCraTes France 2019
-description: "Retour sur SoCraTes France 2019 : revues de code, pair et mob programming, TCR, fish bowl et katas pour améliorer ses pratiques de développement logiciel."
+title: Back from SoCraTes France 2019
+description: "Reflections on SoCraTes France 2019: code reviews, pair and mob programming, TCR, fish bowl, and katas to improve software development practices."
 author: Xavier Balloy
 first_published_site: Just-Tech-IT
 first_published_link: https://medium.com/just-tech-it-now/de-retour-de-socrates-france-2019-7753116b7a9
@@ -11,147 +10,129 @@ tags:
   - mob programming
   - TDD
 ---
-Du 17 au 20 octobre avait lieu un des événements incontournables autour du
-mouvement _software craftsmanship_ (artisanat logiciel) en France. SoCraTes-FR
-se définit comme une non-conférence, en effet, il s’agit plus d’une retraite que
-d’une conférence.
+From October 17 to 20, one of the key events in the _software craftsmanship_
+movement took place in France. SoCraTes-FR describes itself as an unconference
+— it's more of a retreat than a traditional conference.
 <!--more-->
 
-![Le Château de Massillan où a eu lieu SoCraTes-FR 2019](/assets/2019-11-15-socrates-france-2019-1.jpeg)
+![Château de Massillan, where SoCraTes-FR 2019 was held](/assets/2019-11-15-socrates-france-2019-1.jpeg)
 
-L’agenda, notamment, n’est pas connu à l’avance, mais se constitue chaque matin
-par les (très nombreuses) propositions d’ateliers que chacun est encouragé à
-proposer. L’agenda du 18 octobre, difficile de choisir avec tant de
-propositions !
+The agenda isn't known in advance. Instead, it takes shape each morning from the
+many workshop proposals that everyone is encouraged to submit. The October 18
+agenda — so hard to choose with this many options!
 
-![L'agenda du 18 octobre, difficile de choisir avec tant de propositions !](/assets/2019-11-15-socrates-france-2019-2.jpeg)
+![The October 18 agenda — so hard to choose with this many options!](/assets/2019-11-15-socrates-france-2019-2.jpeg)
 
-La qualité logicielle fait partie de l’ADN d’AXA, c’est donc naturellement que
-nous sponsorisions l’événement et envoyons nos développeurs. J’ai eu la chance
-de participer à cet événement pendant lequel j’ai échangé sur des sujets très
-divers allant de DDD, aux revues de code, en passant par des échanges sur le
-green IT et par de nombreux katas.
+Software quality is part of AXA's DNA, so it was natural for us to sponsor the
+event and send our developers. I was lucky enough to attend and discuss a wide
+range of topics — from DDD to code reviews, green IT, and many katas.
 
-Voici quelques éléments des échanges que j’ai pu avoir au cours de ces quatre
-jours.
+Here are some highlights from the discussions I had over those four days.
 
-## Revue de code
+## Code Reviews
 
-Je ne pensais pas que les revues de code étaient un sujet qui m’aurait amené à
-de telles discussions. Pour moi, c’est quelque chose que tout le monde fait et
-qui s’inscrit dans les bonnes pratiques lorsque l’on veut améliorer la qualité
-logicielle.
+I didn't expect code reviews to spark such intense discussions. To me, it's
+something everyone does as part of best practices when striving to improve
+software quality.
 
-Eh bien non ! Même les revues de code ont leurs détracteurs.
+But no! Even code reviews have their detractors.
 
-Les principaux arguments de ces derniers sont qu’elles ne sont généralement pas
-bien faites. Par exemple, on ne récupère pas le code en local, on se contente de
-survoler le code que ce soit lors d’une _pull request_ ou lorsque l’on nous
-présente du code. Finalement, on ne fait que relire le code pour trouver des
-erreurs de nommage, de typographies, de formatage ou des bugs évidents.
+Their main argument is that reviews are usually done poorly. For example,
+reviewers don't pull the code locally — they just skim through it during a
+_pull request_ or when someone presents code to them. In the end, reviews only
+catch naming issues, typos, formatting problems, or obvious bugs.
 
-Par contre, on ne se pose pas (ou peu) de question sur le fonctionnel qui est
-développé, notamment parce que **toute l’équipe** ne connaît pas en détail
-toutes les fonctionnalités de l’application. Pire encore, selon le niveau de
-confiance que l’on a en la personne, on relira différemment le code ! On aura
-tendance à faire plus confiance à une personne qui travaille depuis longtemps
-dans l’équipe et qui fait moins d’erreurs par exemple.
+Meanwhile, reviewers rarely question the business logic being implemented,
+partly because **the whole team** doesn't know every feature in detail. Worse,
+the level of scrutiny varies based on trust in the author! We tend to trust
+someone who's been on the team longer and makes fewer mistakes.
 
-En partant de ce constat, certaines entreprises ont choisi de ne plus faire de
-revues de code, mais de faire beaucoup plus de _pair programming_ et de _mob
-programming_.
+Given this reality, some companies have stopped doing code reviews altogether,
+opting instead for much more _pair programming_ and _mob programming_.
 
-### Le pair programming
+### Pair Programming
 
-Le _pair programming_ est une méthode de travail dans laquelle deux développeurs
-travaillent ensemble sur un même poste de travail.
+_Pair programming_ is a working method where two developers work together at the
+same workstation.
 
-Cette technique s’avère être utile pour les nouveaux arrivants (expérimentés ou
-juniors) afin qu’ils découvrent les méthodes de travail et les bonnes pratiques
-mises en place. Cela évite aussi les allers-retours potentiels des premières
-_pull requests_.
+This technique proves useful for newcomers (whether experienced or junior) to
+learn the team's working methods and established best practices. It also avoids
+the potential back-and-forth of early _pull requests_.
 
-Ces derniers sont contre-productifs : on relit plusieurs fois le même code, les
-développements n’avancent pas et le développeur pourrait être frustré ou prendre
-personnellement les remarques. Cette phase de _pair programming_ terminée, qui
-peut être assimilée à du mentorat et dure plusieurs semaines, il est possible de
-faire confiance à ces personnes et de ne plus relire leur code (ou pas
-entièrement).
+Those back-and-forths are counterproductive: the same code gets reviewed
+multiple times, development stalls, and the developer may feel frustrated or
+take comments personally. Once this _pair programming_ phase ends — which can be
+seen as mentoring and typically lasts several weeks — you can trust these people
+and stop reviewing their code entirely (or at least not every line).
 
-### Le mob programming
+### Mob Programming
 
-Le _mob programming_ est similaire au _pair programming_ sauf que toute l’équipe
-travaille sur la même fonctionnalité ! L'un des principaux avantages est que
-toute l’équipe partage la connaissance fonctionnelle et la propriété du code. On
-n'entendra plus dire : "Ce n'est pas mon code/bug, c'est celui de Paul." ou
-“Qui a travaillé sur cette fonctionnalité ?”. D’autre part comme le code est
-écrit de manière collaborative il est de meilleure qualité et il n’y a plus
-besoin de le relire.
+_Mob programming_ is similar to _pair programming_, except the entire team works
+on the same feature! One key advantage is that the whole team shares both
+business knowledge and code ownership. You'll never hear "That's not my
+code/bug, it's Paul's" or "Who worked on this feature?" anymore. Since the code
+is written collaboratively, it's higher quality and doesn't need review
+afterward.
 
 ![mob programming](/assets/2019-11-15-socrates-france-2019-3.png)
-Faire du _mob programming_ c'est comme faire du _pair programming_ puissance n
-donc avoir du code pérenne. — Quelqu’un lors d’un échange à SoCraTes
+Doing _mob programming_ is like _pair programming_ to the power of n — meaning
+you get sustainable code. — Someone during a discussion at SoCraTes
 
 ## Katas
 
-Lors de cet événement, j’ai pratiqué plusieurs katas qui m’ont permis de
-découvrir un nouveau langage (Haskell) et des nouvelles façons de coder. Un kata
-de code est un exercice de développement qui permet de perfectionner ses
-compétences à travers la pratique et la répétition.
+During this event, I practiced several katas that helped me discover a new
+language (Haskell) and new ways of coding. A code kata is a development exercise that
+helps you hone your skills through practice and repetition.
 
-Si cela vous intéresse, j’ai pratiqué les katas suivants :
+If you're interested, here are the katas I practiced:
 
 - [FizzBuzz](http://codingdojo.org/kata/FizzBuzz/)
 - [RPN Calculator](http://codingdojo.org/kata/RPN/)
 - [Roman Numerals](http://codingdojo.org/kata/RomanNumerals/)
 
-### TCR à la place de TDD
+### TCR Instead of TDD
 
-J'ai eu l'occasion d'appliquer TCR, un acronyme pour test && _commit_ ||
-_revert_. Il s’agit d’une méthode de programmation proposée
-par [Kent Beck](https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864)
-(l’inventeur du TDD). Son principe est que lorsque l’on exécute les tests, s’ils
-ne passent pas, on _revert_ le code !
+I had the chance to try TCR, an acronym for test && _commit_ || _revert_. It's a
+programming method proposed by
+[Kent Beck](https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864)
+(the inventor of TDD). The principle: when you run tests, if they fail, you
+_revert_ your code!
 
-Nous l’avons appliqué d’une manière un peu moins extrême lors du kata, avant de
-lancer les tests on faisait un pari sur le fait qu’ils passent ou pas. Si le
-pari est gagné, on _commit_, sinon on _revert_. Cela permet de passer par la
-phase “barre rouge” où l’on voit les tests en erreur.
+We applied a slightly less extreme version during the kata. Before running
+tests, we'd bet on whether they'd pass or not. If we won the bet, we'd _commit_;
+otherwise, we'd _revert_. This approach still lets you go through the "red bar"
+phase where you see failing tests.
 
-J’ai préféré cette approche, on passe moins de temps à “exécuter les tests dans
-sa tête” pour ne pas voir tout notre code (y compris le dernier test)
-disparaître. Et surtout on garde l’avantage de voir ses tests échouer avant de
-passer, qui est pour moi une phase importante du TDD que je pratique tous les
-jours.
+I preferred this approach. You spend less time "running tests in your head" to
+avoid seeing all your code (including the latest test) disappear. Most
+importantly, you keep the benefit of seeing your tests fail before they pass —
+which I consider a crucial part of the TDD I practice daily.
 
-TCR oblige cependant à se forcer à passer par la phase d’implémentation évidente
-du test (on parie qu’il sera vert, on commit) avant de faire un refactoring
-(s’il ne fonctionne pas on _revert_ et on revient dans un état fonctionnel).
+However, TCR does force you to go through the obvious implementation phase of
+the test (bet it'll be green, commit) before refactoring (if it doesn't work,
+_revert_ and return to a working state).
 
-### Fish bowl mob programming
+### Fish Bowl Mob Programming
 
-Avant SoCraTes, j'avais entendu parler de _mob programming_ mais n'avais jamais
-pratiqué. Lors d’un kata, nous avons essayé une technique de facilitation
-spécifique pour faire du _mob programming_ : le fish bowl.
+Before SoCraTes, I'd heard of _mob programming_ but had never tried it. During
+one kata, we experimented with a specific facilitation technique for _mob
+programming_: the fish bowl.
 
-Son fonctionnement est assez simple :
+The rules are fairly simple:
 
-- Un pilote a le clavier. Il ne fait **que** coder et ne prend pas de décisions.
-- Un navigateur dit au pilote ce qu’il faut faire. Il est le **seul** à parler.
-- Une chaise est libre pour poser des **questions**. Mais attention, uniquement
-  des questions pour mieux comprendre le code (on ne comprend pas une syntaxe
-  par exemple) ou le fonctionnel. Il est interdit de poser des questions du
-  type : “Pourquoi est-ce que l’on fait comme ça ?”, dans ce cas on prend la
-  place du navigateur !
-- Toutes les autres personnes sont **silencieuses** et peuvent venir prendre la
-  place du pilote ou du navigateur à n’importe quel moment.
+- A driver has the keyboard. They **only** code and don't make decisions.
+- A navigator tells the driver what to do. They're the **only** one speaking.
+- One chair is open for **questions**. But beware — only questions to better
+  understand the code (e.g., an unfamiliar syntax) or the business logic. You
+  can't ask questions like "Why are we doing it this way?" — in that case, you
+  take the navigator's seat!
+- Everyone else stays **silent** and can take the driver's or navigator's place
+  at any moment.
 
-J’ai beaucoup aimé cette technique pour faire du _mob programming_ car elle
-évite la cacophonie qui peut régner lorsque l'on essaye de tout coder en même
-temps. Dans ces cas-là le pilote ne sait pas quoi faire et il est difficile
-d’avancer.
+I really liked this technique for _mob programming_ because it prevents the
+chaos that can arise when everyone tries to code at once. In those situations,
+the driver doesn't know what to do, and it's hard to make progress.
 
-Depuis l’événement, j’ai testé cette technique lors d’un kata et le format a été
-très apprécié. Cependant, comme pour d’autres techniques, je pense qu’il faut
-d’abord pratiquer pour s’entraîner avant de le faire tous les jours sur du code
-de production.
+Since the event, I've tested this technique during a kata and the format was
+well received. However, like other techniques, I think you need to practice it
+first before using it daily on production code.
