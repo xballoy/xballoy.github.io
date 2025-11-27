@@ -13,7 +13,7 @@ lang: en
 title: Xavier Balloy Dev Blog
 author: Xavier Balloy
 description: >-
-  I write things about dev, mostly in English but sometimes in French.
+  A software engineer sharing thoughts on code quality, conferences, and continuous learning.
 
 # minima configuration
 twitter_username: xballoy
@@ -22,4 +22,3 @@ github_username: xballoy
 show_excerpts: true
 fathom_analytics:
   site_id: XPSDARMZ
-  custom_domain: https://plentiful-fountain.balloy.me/script.js

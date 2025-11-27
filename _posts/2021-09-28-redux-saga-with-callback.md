@@ -1,14 +1,14 @@
 ---
 layout: post
 title: How to use Redux-Saga effects within a callback
-description: Learn how to use Redux-Saga effects within a callback with an example.
+description: Use Redux-Saga channels to dispatch actions from callback-based functions in your generator sagas.
 author: Xavier Balloy
 first_published_site: Kumojin dev notes blog
 first_published_link: https://kumojin.github.io/2021/09/28/redux-saga-with-callback.html
 tags:
+  - redux-saga
+  - async-patterns
   - javascript
-  - react
-  - saga
 ---
 Because you can only add a `yield` expression in a generator body it can be
 tricky to use a callback-based library in your saga (a generator function).
@@ -28,15 +28,15 @@ function* mySaga(input) {
     if (err) {
       // Not valid: A 'yield' expression is only allowed in a generator body.
       yield put({ type: 'ERROR', err });
+    } else {
+      // Not valid: A 'yield' expression is only allowed in a generator body.
+      yield put({ type: 'SUCCESS', data });
     }
-
-    // Not valid: A 'yield' expression is only allowed in a generator body.
-    yield put({ type: 'SUCCESS', data });
   });
 }
 ```
 
-A solution is to use a `channel` which kind of acts as a watcher.
+A solution is to use a `channel` which acts as a watcher.
 
 ```js
 import { put, take } from 'redux-saga/effects';
@@ -47,9 +47,9 @@ function* mySaga(input) {
   callbackBasedFn(input, (err, data) => {
     if (err) {
       callbackChannel.put({ type: 'ERROR', err });
+    } else {
+      callbackChannel.put({ type: 'SUCCESS', data });
     }
-
-    callbackChannel.put({ type: 'SUCCESS', data });
   });
 
   const action = yield take(callbackChannel);
