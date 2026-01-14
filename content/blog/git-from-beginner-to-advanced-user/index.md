@@ -5,7 +5,6 @@ date = 2019-09-12
 
 [taxonomies]
 tags = ["git", "version-control", "cli"]
-authors = ["xballoy"]
 
 [extra]
 comment = true

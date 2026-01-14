@@ -5,7 +5,6 @@ date = 2021-09-28
 
 [taxonomies]
 tags = ["redux-saga", "async-patterns", "javascript"]
-authors = ["xballoy"]
 
 [extra]
 comment = true

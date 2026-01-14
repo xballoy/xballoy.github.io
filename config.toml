@@ -14,7 +14,6 @@ feed = true
 paginate_by = 10
 
 [[taxonomies]]
-name = "authors"
 feed = true
 paginate_by = 10
 

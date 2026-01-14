@@ -5,7 +5,6 @@ date = 2019-11-15
 
 [taxonomies]
 tags = ["software craftsmanship", "mob programming", "TDD"]
-authors = ["xballoy"]
 
 [extra]
 comment = true

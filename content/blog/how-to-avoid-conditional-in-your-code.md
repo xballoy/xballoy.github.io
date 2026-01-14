@@ -5,7 +5,6 @@ date = 2017-11-29
 
 [taxonomies]
 tags = ["java", "clean-code", "refactoring", "kata"]
-authors = ["xballoy"]
 
 [extra]
 comment = true

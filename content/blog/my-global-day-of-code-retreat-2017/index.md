@@ -5,7 +5,6 @@ date = 2017-11-19
 
 [taxonomies]
 tags = ["code retreat", "kata", "tdd", "pair programming", "conways game of life"]
-authors = ["xballoy"]
 
 [extra]
 comment = true
