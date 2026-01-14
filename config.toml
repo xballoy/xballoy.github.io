@@ -8,6 +8,11 @@ generate_feeds = true
 feed_filenames = ["atom.xml"]
 compile_sass = true
 
+[markdown.highlighting]
+light_theme = "github-light"
+dark_theme = "github-dark"
+rendering_style = "class"
+
 [[taxonomies]]
 name = "tags"
 feed = true
