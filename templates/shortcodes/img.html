@@ -1,0 +1,14 @@
+{#-
+  Image shortcode with webp optimization using resize_image
+
+  Parameters:
+  - src: image filename (colocated with the post)
+  - alt: alt text for the image (required for accessibility)
+  - width: optional max width (default: 800)
+  - quality: optional quality 1-100 (default: 85)
+-#}
+{% set width = width | default(value=800) %}
+{% set quality = quality | default(value=85) %}
+{% set image_path = page.colocated_path ~ src %}
+{% set image = resize_image(path=image_path, width=width, op="fit_width", format="webp", quality=quality) %}
+<img src="{{ image.url }}" alt="{{ alt }}" width="{{ image.width }}" height="{{ image.height }}" loading="lazy" />

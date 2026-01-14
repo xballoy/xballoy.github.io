@@ -19,13 +19,13 @@ movement took place in France. SoCraTes-FR describes itself as an unconference
 
 <!-- more -->
 
-![Château de Massillan, where SoCraTes-FR 2019 was held](/images/2019-11-15-socrates-france-2019-1.jpeg)
+{{ img(src="2019-11-15-socrates-france-2019-1.jpeg", alt="Château de Massillan, where SoCraTes-FR 2019 was held") }}
 
 The agenda isn't known in advance. Instead, it takes shape each morning from the
 many workshop proposals that everyone is encouraged to submit. The October 18
 agenda — so hard to choose with this many options!
 
-![The October 18 agenda — so hard to choose with this many options!](/images/2019-11-15-socrates-france-2019-2.jpeg)
+{{ img(src="2019-11-15-socrates-france-2019-2.jpeg", alt="The October 18 agenda — so hard to choose with this many options!") }}
 
 Software quality is part of AXA's DNA, so it was natural for us to sponsor the
 event and send our developers. I was lucky enough to attend and discuss a wide
@@ -78,7 +78,7 @@ code/bug, it's Paul's" or "Who worked on this feature?" anymore. Since the code
 is written collaboratively, it's higher quality and doesn't need review
 afterward.
 
-![mob programming](/images/2019-11-15-socrates-france-2019-3.png)
+{{ img(src="2019-11-15-socrates-france-2019-3.png", alt="mob programming") }}
 Doing _mob programming_ is like _pair programming_ to the power of n — meaning
 you get sustainable code. — Someone during a discussion at SoCraTes
 

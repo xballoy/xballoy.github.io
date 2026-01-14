@@ -15,7 +15,7 @@ My takeaway from the Global Day of Code Retreat 2017.
 
 <!-- more -->
 
-![Picture of the Global Day of Code Retreat at AXA](/images/2017-11-19-my-global-day-of-code-retreat-2017-1.jpeg)
+{{ img(src="2017-11-19-my-global-day-of-code-retreat-2017-1.jpeg", alt="Picture of the Global Day of Code Retreat at AXA") }}
 
 Last Saturday, I attended
 the [Global Day of Code Retreat](http://coderetreat.org/) hosted at AXA

@@ -25,8 +25,7 @@ header_menu_name = "main"
 
 [extra.menus]
 main = [
-    { url = "$BASE_URL/blog/", name = "Archive" },
-    { url = "$BASE_URL/tags/", name = "Tags" },
+    { url = "$BASE_URL/blog/", name = "Blog" },
 ]
 
 [extra.profiles.xballoy]
@@ -35,7 +34,6 @@ bio = "A software engineer sharing thoughts on code quality, conferences, and co
 social = [
     { name = "github", url = "https://github.com/xballoy" },
     { name = "linkedin", url = "https://linkedin.com/in/xavierballoy" },
-    { name = "x", url = "https://x.com/xballoy" },
     { name = "rss", url = "$BASE_URL/atom.xml" },
 ]
 

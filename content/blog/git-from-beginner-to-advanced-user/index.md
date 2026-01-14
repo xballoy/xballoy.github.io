@@ -17,7 +17,7 @@ A journey with Git command line.
 
 <!-- more -->
 
-![A journey with Git command line](/images/2019-09-12-git-from-beginner-to-advanced-user-1.png)
+{{ img(src="2019-09-12-git-from-beginner-to-advanced-user-1.png", alt="A journey with Git command line") }}
 
 ## Disclaimer
 
@@ -758,7 +758,7 @@ git flow feature start -F XYZ hotfix/1.0.0
 
 ### Commit messages
 
-![Git Commit](/images/2019-09-12-git-from-beginner-to-advanced-user-2.png)
+{{ img(src="2019-09-12-git-from-beginner-to-advanced-user-2.png", alt="Git Commit") }}
 
 To have a clean Git history we follow the Conventional commit message
 guidelines.
