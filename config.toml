@@ -1,0 +1,59 @@
+base_url = "https://xballoy.github.io"
+theme = "linkita"
+default_language = "en"
+author = "xballoy"
+title = "Xavier Balloy Dev Blog"
+description = "A software engineer sharing thoughts on code quality, conferences, and continuous learning."
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+compile_sass = true
+
+[[taxonomies]]
+name = "tags"
+feed = true
+paginate_by = 10
+
+[[taxonomies]]
+name = "authors"
+feed = true
+paginate_by = 10
+
+[extra]
+comment = true
+title_separator = " | "
+header_menu_name = "main"
+
+[extra.menus]
+main = [
+    { url = "$BASE_URL/blog/", name = "Archive" },
+    { url = "$BASE_URL/tags/", name = "Tags" },
+]
+
+[extra.profiles.xballoy]
+name = "Xavier Balloy"
+bio = "A software engineer sharing thoughts on code quality, conferences, and continuous learning."
+social = [
+    { name = "github", url = "https://github.com/xballoy" },
+    { name = "linkedin", url = "https://linkedin.com/in/xavierballoy" },
+    { name = "x", url = "https://x.com/xballoy" },
+    { name = "rss", url = "$BASE_URL/atom.xml" },
+]
+
+[extra.footer]
+since = 2017
+copyright = "&copy; $YEAR Xavier Balloy"
+
+[extra.languages.en]
+locale = "en_US"
+date_format = "%B %d, %Y"
+
+[extra.giscus]
+repo = "xballoy/xballoy.github.io"
+repo_id = ""
+category = "Announcements"
+category_id = ""
+mapping = "pathname"
+reactions_enabled = 1
+emit_metadata = 0
+theme = "preferred_color_scheme"
+lang = "en"
