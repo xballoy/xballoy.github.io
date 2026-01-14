@@ -17,6 +17,12 @@ paginate_by = 10
 feed = true
 paginate_by = 10
 
+[extra.style]
+bg_color = "#ffffff"
+bg_dark_color = "#09090b"
+header_color = "#fafafa"
+header_dark_color = "#18181b"
+
 [extra]
 comment = true
 title_separator = " | "
