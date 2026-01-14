@@ -1,74 +1,68 @@
 # Xavier Balloy Dev Blog
 
-This website uses [Jekyll](https://jekyllrb.com) and
-the [minima](https://github.com/jekyll/minima) theme.
+This website uses [Zola](https://www.getzola.org/) and
+the [Linkita](https://www.getzola.org/themes/linkita/) theme.
 
 ## Writing a post
 
-Add a file to the `_posts` directory with the following format
+Add a file to the `content/blog/` directory. Posts can be:
 
+- A single markdown file: `my-post.md`
+- A folder with an `index.md` for posts with images: `my-post/index.md`
+
+Posts use TOML front matter:
+
+```toml
++++
+title = "My awesome blog post"
+description = "A brief description for SEO and previews."
+date = 2024-01-15
+
+[taxonomies]
+tags = ["tag1", "tag2"]
+
+[extra]
+comment = true
++++
+
+Post content starts here.
+
+<!-- more -->
+
+Content after this marker appears only on the full post page.
 ```
-YEAR-MONTH-DAY-title.md
-```
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit
-numbers.
-
-All blog post files must begin
-with [front matter](https://jekyllrb.com/docs/front-matter/). For example, the
-minimal example is:
-
-```
----
-layout: post
-title:  "My awesome blog post"
----
-
-# Post title
-
-Post content
-```
-
-For more information see "[Post](https://jekyllrb.com/docs/posts/)" in the
-Jekyll documentation.
+For more information see the [Zola documentation](https://www.getzola.org/documentation/content/overview/).
 
 ## Running locally
 
 ### Prerequisites
 
+Install Zola following the [official instructions](https://www.getzola.org/documentation/getting-started/installation/).
+
+On macOS:
+
 ```bash
-# ruby-install: install any Ruby version
-# chruby: changes the current Ruby
-$ brew install ruby-install chruby
-
-# Install the current version of Ruby
-$ ruby-install ruby
-
-# Install bundler
-$ gem install bundler
+brew install zola
 ```
 
 ### Serve the site
 
-1. Run `bundle install` to install the dependencies.
-2. Then you can serve the website with `bundle exec jekyll serve` and visit it
-   at [http://127.0.0.1:4000/](http://127.0.0.1:4000/).
-
-To see your modifications you just need to refresh the page. However, if you
-modify the `_config.yml` file you will need to stop the process and serve the
-website again.
-
-## Configuration
-
-### Enabling analytics (via Fathom)
-
-To activate [Fathom Analytics](https://usefathom.com/ref/2LQGOG) (using this is
-a affiliate link you will get $10 discount on your first invoice) add the
-following lines in `_config.yml`:
-
-```yml
-fathom_analytics:
-  site_id: ABCDEFG
-  # If you have a custom domain uncomment the following line
-  # custom_domain: https://llama.yoursite.com/script.js
+```bash
+zola serve
 ```
+
+Visit [http://127.0.0.1:1111/](http://127.0.0.1:1111/). Changes are automatically reloaded.
+
+## Linting
+
+Markdown linting uses Node.js and pnpm:
+
+```bash
+pnpm install
+pnpm lint
+```
+
+## Deployment
+
+The site is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to `main`.
