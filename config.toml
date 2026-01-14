@@ -2,7 +2,7 @@ base_url = "https://xballoy.github.io"
 theme = "linkita"
 default_language = "en"
 author = "xballoy"
-title = "Xavier Balloy Dev Blog"
+title = "Xavier Balloy"
 description = "A software engineer sharing thoughts on code quality, conferences, and continuous learning."
 generate_feeds = true
 feed_filenames = ["atom.xml"]
@@ -27,6 +27,7 @@ header_dark_color = "#18181b"
 comment = true
 title_separator = " | "
 header_menu_name = "main"
+disable_default_favicon = true
 
 [extra.menus]
 main = [
@@ -52,9 +53,9 @@ date_format = "%B %d, %Y"
 
 [extra.giscus]
 repo = "xballoy/xballoy.github.io"
-repo_id = ""
-category = "Announcements"
-category_id = ""
+repo_id = "R_kgDOGXCZ9w"
+category = "General"
+category_id = "DIC_kwDOGXCZ984C09nl"
 mapping = "pathname"
 reactions_enabled = 1
 emit_metadata = 0
