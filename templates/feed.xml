@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ lang }}">
+    <title>{{ config.title }}</title>
+    {%- if config.description %}
+    <subtitle>{{ config.description }}</subtitle>
+    {%- endif %}
+    <link href="{{ feed_url | safe }}" rel="self" type="application/atom+xml"/>
+    <link href="{{ last_updated | date(format="%Y-%m-%dT%H:%M:%S%:z") }}"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>{{ last_updated | date(format="%+") }}</updated>
+    <id>{{ feed_url | safe }}</id>
+    {%- if config.author %}
+    <author>
+        <name>{{ config.author }}</name>
+    </author>
+    {%- endif %}
+    {%- for page in pages %}
+    <entry xml:lang="{{ page.lang }}">
+        <title>{{ page.title }}</title>
+        <published>{{ page.date | date(format="%+") }}</published>
+        <updated>{{ page.updated | default(value=page.date) | date(format="%+") }}</updated>
+        {%- if page.authors %}
+        {%- for author in page.authors %}
+        <author>
+            <name>{{ author }}</name>
+        </author>
+        {%- endfor %}
+        {%- elif config.author %}
+        <author>
+            <name>{{ config.author }}</name>
+        </author>
+        {%- endif %}
+        <link rel="alternate" type="text/html" href="{{ page.permalink | safe }}"/>
+        <id>{{ page.permalink | safe }}</id>
+        {%- if page.summary %}
+        <summary type="html">{{ page.summary }}</summary>
+        {%- endif %}
+        <content type="html" xml:base="{{ page.permalink | safe }}">{{ page.content }}</content>
+    </entry>
+    {%- endfor %}
+</feed>

@@ -3,12 +3,13 @@ name: Pull Request
 on:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
-  build_and_test:
-    name: Build and test
-
+  lint:
+    name: Lint
     runs-on: ubuntu-24.04
-
     steps:
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
@@ -22,16 +23,12 @@ jobs:
           cache: 'pnpm'
           node-version-file: '.nvmrc'
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@d5f787ce339eb0767271bc01d922e85644c2c8ab # v1.280.0
-        with:
-          bundler-cache: true
-
       - name: Install dependencies
         run: pnpm install
 
       - name: Check lint
         run: pnpm lint
 
-      - name: Build site
-        run: bundle exec jekyll build
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml

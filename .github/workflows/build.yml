@@ -1,0 +1,19 @@
+name: Build Zola Site
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+        with:
+          submodules: true
+
+      - name: Build Zola site
+        uses: getzola/github-pages@435a833fd3f1edcb28d70576c89e30a6365cd8f7
+        with:
+          zola_version: 'v0.22.0'

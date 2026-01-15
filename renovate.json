@@ -1,4 +1,19 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>xballoy/renovate-config"]
+  "extends": ["github>xballoy/renovate-config"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["**/.github/workflows/build.yml"],
+      "matchStrings": ["zola_version: '(?<currentValue>[^']+)'"],
+      "depNameTemplate": "getzola/zola",
+      "datasourceTemplate": "github-releases"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["getzola/zola"],
+      "automerge": false
+    }
+  ]
 }
