@@ -7,8 +7,7 @@
       "managerFilePatterns": ["**/.github/workflows/build.yml"],
       "matchStrings": ["zola_version: '(?<currentValue>[^']+)'"],
       "depNameTemplate": "getzola/zola",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^v(?<version>.*)$"
+      "datasourceTemplate": "github-releases"
     }
   ],
   "packageRules": [
