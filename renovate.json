@@ -10,5 +10,11 @@
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "^v(?<version>.*)$"
     }
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["getzola/zola"],
+      "automerge": false
+    }
   ]
 }
