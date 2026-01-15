@@ -1,11 +1,11 @@
 base_url = "https://xballoy.github.io"
 theme = "linkita"
 default_language = "en"
-author = "xballoy"
+author = "Xavier Balloy"
 title = "Xavier Balloy"
 description = "A software engineer sharing thoughts on code quality, conferences, and continuous learning."
 generate_feeds = true
-feed_filenames = ["atom.xml"]
+feed_filenames = ["feed.xml"]
 compile_sass = true
 
 [markdown.highlighting]
@@ -45,7 +45,7 @@ bio = "A software engineer sharing thoughts on code quality, conferences, and co
 social = [
     { name = "github", url = "https://github.com/xballoy" },
     { name = "linkedin", url = "https://linkedin.com/in/xavierballoy" },
-    { name = "rss", url = "$BASE_URL/atom.xml" },
+    { name = "rss", url = "$BASE_URL/feed.xml" },
 ]
 
 [extra.footer]
