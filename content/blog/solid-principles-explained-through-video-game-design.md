@@ -8,6 +8,7 @@ tags = ["solid", "clean-code", "typescript"]
 
 [extra]
 comment = true
+mermaid = true
 first_published_site = "Kumojin"
 first_published_link = "https://kumojin.com/5-principes-solid-expliques-developpeurs/"
 +++
@@ -46,7 +47,7 @@ The Single Responsibility Principle states that a class should have only one rea
 
 Consider the following class diagram:
 
-```mermaid
+{% mermaid() %}
 classDiagram
   class LeekAI {
     +play()
@@ -54,7 +55,7 @@ classDiagram
     -attack(leek: Leek)
     -heal(leek: Leek)
   }
-```
+{% end %}
 
 In this example, the `LeekAI` class has multiple responsibilities:
 
@@ -67,7 +68,7 @@ One reason to modify the `LeekAI` class would be to change how the leek attacks.
 
 To fix this, we should extract these methods into their own classes:
 
-```mermaid
+{% mermaid() %}
 classDiagram
   LeekAI <-- MoveAI
   LeekAI <-- AttackAI
@@ -84,7 +85,7 @@ classDiagram
   class HealAI {
     +heal(leek: Leek, target: Leek)
   }
-```
+{% end %}
 
 With this new structure, we have removed the excessive coupling. The `LeekAI` class now has **only one reason to change**: if we change the order of our gameplay phases during a turn.
 
@@ -163,7 +164,7 @@ If we want to change how our AI moves but these two classes cannot be modified (
 
 To fix this, we should create abstractions for `SimpleMoveAI` and `SimpleAttackAI` and use those abstractions in `LeekAI`, so we can change movement or attack behavior without modifying our module.
 
-```mermaid
+{% mermaid() %}
 classDiagram
   MoveAI <|.. SimpleMoveAI
   MoveAI <|.. AdvancedMoveAI
@@ -189,7 +190,7 @@ classDiagram
   class AdvancedAttackAI {
     +attack(leek: Leek, target: number)
   }
-```
+{% end %}
 
 We can then modify our class as follows:
 
@@ -360,7 +361,7 @@ class LeekAI {
 
 This time, our module depends on abstractions and our implementations depend on an interface, as shown in the class diagram.
 
-```mermaid
+{% mermaid() %}
 classDiagram
   MoveAI <|.. SimpleMoveAI
   MoveAI <|.. AdvancedMoveAI
@@ -387,7 +388,7 @@ classDiagram
   class AdvancedAttackAI {
     +attack(leek: Leek, target: number)
   }
-```
+{% end %}
 
 Finally, to link the concrete implementations to the abstractions, we use [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) (DI).
 

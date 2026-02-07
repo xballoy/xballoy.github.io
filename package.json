@@ -12,10 +12,15 @@
     "url": "https://github.com/xballoy/xballoy.github.io/issues"
   },
   "homepage": "https://github.com/xballoy/xballoy.github.io#readme",
+  "dependencies": {
+    "mermaid": "11.12.2"
+  },
   "devDependencies": {
     "markdownlint-cli": "0.47.0"
   },
   "scripts": {
+    "build": "pnpm build:mermaid",
+    "build:mermaid": "mkdir -p static/js/mermaid && cp node_modules/mermaid/dist/mermaid.min.js static/js/mermaid/mermaid.min.js",
     "lint": "pnpm lint:markdown",
     "lint:markdown": "markdownlint **/*.md --fix --ignore node_modules --ignore vendor --ignore _site"
   },
