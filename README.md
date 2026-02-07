@@ -46,6 +46,14 @@ On macOS:
 brew install zola
 ```
 
+### Install the theme
+
+The [Linkita](https://codeberg.org/salif/linkita) theme is installed as a git submodule. After cloning, initialize it:
+
+```bash
+git submodule update --init --recursive
+```
+
 ### Serve the site
 
 ```bash
