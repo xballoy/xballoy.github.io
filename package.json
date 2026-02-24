@@ -24,5 +24,5 @@
     "lint": "pnpm lint:markdown",
     "lint:markdown": "markdownlint **/*.md --fix --ignore node_modules --ignore vendor --ignore _site"
   },
-  "packageManager": "pnpm@10.30.0"
+  "packageManager": "pnpm@10.30.1"
 }
