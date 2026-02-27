@@ -1,2 +1,5 @@
+strictDepBuilds: true
+
 overrides:
-  'lodash-es': '^4.17.23'
+  'lodash-es': '^4.17.23' # fixes CVE-2025-13465
+  'minimatch': '>=10.2.3' # fixes CVE-2026-26996, CVE-2026-27903 and CVE-2026-27904
