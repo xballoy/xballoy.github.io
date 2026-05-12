@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/xballoy/xballoy.github.io#readme",
   "dependencies": {
-    "mermaid": "11.14.0"
+    "mermaid": "11.15.0"
   },
   "devDependencies": {
     "markdownlint-cli": "0.48.0"
