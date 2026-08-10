@@ -19,7 +19,7 @@ jobs:
           persist-credentials: false
 
       - name: Install pnpm
-        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
 
       - name: Setup Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -36,4 +36,4 @@ jobs:
       - name: Build Zola site
         uses: getzola/github-pages@435a833fd3f1edcb28d70576c89e30a6365cd8f7 # v1
         with:
-          zola_version: 'v0.22.1'
+          zola_version: 'v0.23.2'
