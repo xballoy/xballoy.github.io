@@ -40,11 +40,11 @@ For more information see the [Zola documentation](https://www.getzola.org/docume
 
 Install Zola following the [official instructions](https://www.getzola.org/documentation/getting-started/installation/).
 
-On macOS:
-
-```bash
-brew install zola
-```
+This site requires Zola 0.22.x. Zola 0.23 removed shortcodes and moved to Tera 2, which the
+Linkita theme does not support yet — see
+[linkita#61](https://codeberg.org/salif/linkita/issues/61). Note that `brew install zola`
+installs the latest release, so download a 0.22.x build from the
+[releases page](https://github.com/getzola/zola/releases/tag/v0.22.1) instead.
 
 ### Install the theme
 
