@@ -13,6 +13,7 @@
   "packageRules": [
     {
       "matchPackageNames": ["getzola/zola"],
+      "groupName": null,
       "automerge": false
     }
   ]
