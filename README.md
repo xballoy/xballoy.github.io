@@ -48,7 +48,7 @@ installs the latest release, so download a 0.22.x build from the
 
 ### Install the theme
 
-The [Linkita](https://codeberg.org/salif/linkita) theme is installed as a git submodule. After cloning, initialize it:
+The [Linkita](https://github.com/salif/linkita) theme is installed as a git submodule. After cloning, initialize it:
 
 ```bash
 git submodule update --init --recursive
