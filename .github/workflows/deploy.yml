@@ -17,7 +17,7 @@ jobs:
     name: Build
     permissions:
       contents: read
-    uses: $/.github/workflows/build.yml
+    uses: ./.github/workflows/build.yml # zizmor: ignore[self-repository] actionlint doesn't support the $/ syntax yet (rhysd/actionlint#711)
 
   deploy:
     name: Deploy
