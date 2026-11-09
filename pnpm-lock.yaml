@@ -174,6 +174,9 @@ importers:
         specifier: 12.2.0
         version: 12.2.0
     devDependencies:
+      '@kjanat/actionlint':
+        specifier: 1.17.0
+        version: 1.17.0
       markdownlint-cli:
         specifier: 0.49.1
         version: 0.49.1
@@ -206,6 +209,66 @@ packages:
 
   '@iconify/utils@3.1.7':
     resolution: {integrity: sha512-JZHlwdID+dy+lTgbYC8NEC4zeugqeYsc6jewvzb4c58kHauJn+X7rNwQjxz5p2qSjqaEeQoLkCIQ9v/H4PK0/w==}
+
+  '@kjanat-actionlint/actionlint-darwin-arm64@1.17.0':
+    resolution: {integrity: sha512-kB93q6knyWErHnvJdOCf6et16j9tgeLpIYny3KYnoO/qvzI624de2QAK8fgvZvN1XElmuqXE8zea5Uui7BiKoQ==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@kjanat-actionlint/actionlint-darwin-x64@1.17.0':
+    resolution: {integrity: sha512-Eh+pD63DkrPWNOTr1dACvDcJ4Brf8hPIvLrrd8bvZOQUXyIVc2rZ4QgWn1sTG24c0BQxHStgcSKCk4ZRUUOaIQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@kjanat-actionlint/actionlint-freebsd-ia32@1.17.0':
+    resolution: {integrity: sha512-Sr209gtHyUbqAfPzYmxIKqIm8Mm2l3SFIWPTOQQWWUuj/m6IuyTKOXrQfvftcr2obDXbFq5L+IFNfRwQz6OvHg==}
+    cpu: [ia32]
+    os: [freebsd]
+
+  '@kjanat-actionlint/actionlint-freebsd-x64@1.17.0':
+    resolution: {integrity: sha512-9S1XdFePaZgB4BPgiXr1HgrLheYlV4huwLxraRhZl6TzbFx6ngFBa4GaIwLVFcGqsFGl9PV0v0bViT5uWOcTQg==}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@kjanat-actionlint/actionlint-linux-arm64@1.17.0':
+    resolution: {integrity: sha512-gXwplEN84mc/iyIgD6UmL8w0Gs5C+xQnUWF/l1Yi5wXz02CLzxRWy87vnlSOewoejeVGUyS137WKyt/xPDvRww==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@kjanat-actionlint/actionlint-linux-arm@1.17.0':
+    resolution: {integrity: sha512-R4f+XuIFGNIo6gwK7Ha1OCehBrxQLEmzpqEdg7KCTxl8X6zt6svaItjyWigwnryZT9wK7tjpG6j3Wm4dJEoSGA==}
+    cpu: [arm]
+    os: [linux]
+
+  '@kjanat-actionlint/actionlint-linux-ia32@1.17.0':
+    resolution: {integrity: sha512-/yuoz9xU6JhkHwlNcZwA22qp/G/joHagElS8fiN/fVhNWYmY9xaZfOW29ae/eSMBmOPiEcMsEjXYxyd8AHgZSw==}
+    cpu: [ia32]
+    os: [linux]
+
+  '@kjanat-actionlint/actionlint-linux-x64@1.17.0':
+    resolution: {integrity: sha512-NpRSVyKuBd4yizECmaEkjVQmQwvTR8gOpDqm/DL5+E3pXmyt201QJ1IUWhsYFLVn+2MlVolWKaP/8UIPYkvPTQ==}
+    cpu: [x64]
+    os: [linux]
+
+  '@kjanat-actionlint/actionlint-win32-arm64@1.17.0':
+    resolution: {integrity: sha512-ew0OEIcsCV9m+SBt5jekbumV9wgQ4GnMq/NOaXDT7BkXfy5kA4uIy5LGzelGVixccEAze8ClJ/x2l2rHZTFrvg==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@kjanat-actionlint/actionlint-win32-ia32@1.17.0':
+    resolution: {integrity: sha512-pQkRrUZ5vPpjdESitC+eiEDI0HFo4oFrbYUkz92VWjTtz/GKO2FrcvmKArAMZ2sqqGMUQVmkMA0MPb51DU6bkw==}
+    cpu: [ia32]
+    os: [win32]
+
+  '@kjanat-actionlint/actionlint-win32-x64@1.17.0':
+    resolution: {integrity: sha512-d7P0FeO7TWYJL7zyxn2+KOmH5xpqsopvUlm08rdajETsc7kdzpj0fjy057ysRYC2jbQkMxi/9Oha4yZ/cidnYQ==}
+    cpu: [x64]
+    os: [win32]
+
+  '@kjanat/actionlint@1.17.0':
+    resolution: {integrity: sha512-FW1ggmACLgv1nB/sACgYJh2/4NXY78sSoEhx8XCEr9NcVNG5kQtA8Lv1dNQM0Lr/IAHnJXsOmwZjKYafhNTKTg==}
+    engines: {node: '>=18.20.0'}
+    hasBin: true
 
   '@mermaid-js/parser@2.0.1':
     resolution: {integrity: sha512-j37dj/h6p6pots1L7pLPPNuABEEu9WP4OYg9pW1g+nYG331j0+3canE9OagtYdytYvdSAMG+2fKU5cxep6LgjA==}
@@ -328,6 +391,9 @@ packages:
   ansi-regex@6.4.0:
     resolution: {integrity: sha512-KzTVk2tCWAHtYrvvvaP8bJKJq2pVinhLcGEQdtLIYPbmNGNyYe8QwNaTUYQp2J7/vIsUKt5QCqAfUkYyG9DkOw==}
     engines: {node: '>=12'}
+
+  ansispeck@0.4.3:
+    resolution: {integrity: sha512-+U6dFeORz6VrHK0AYqkVpLsjsRZGWgVQDqp7c6KpKDzpGbCdNAyEH7K8wtomuElS3sX1Nne1YeMgCK0kfPB/9A==}
 
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
@@ -872,6 +938,55 @@ snapshots:
       '@iconify/types': 2.0.0
       import-meta-resolve: 4.2.0
 
+  '@kjanat-actionlint/actionlint-darwin-arm64@1.17.0':
+    optional: true
+
+  '@kjanat-actionlint/actionlint-darwin-x64@1.17.0':
+    optional: true
+
+  '@kjanat-actionlint/actionlint-freebsd-ia32@1.17.0':
+    optional: true
+
+  '@kjanat-actionlint/actionlint-freebsd-x64@1.17.0':
+    optional: true
+
+  '@kjanat-actionlint/actionlint-linux-arm64@1.17.0':
+    optional: true
+
+  '@kjanat-actionlint/actionlint-linux-arm@1.17.0':
+    optional: true
+
+  '@kjanat-actionlint/actionlint-linux-ia32@1.17.0':
+    optional: true
+
+  '@kjanat-actionlint/actionlint-linux-x64@1.17.0':
+    optional: true
+
+  '@kjanat-actionlint/actionlint-win32-arm64@1.17.0':
+    optional: true
+
+  '@kjanat-actionlint/actionlint-win32-ia32@1.17.0':
+    optional: true
+
+  '@kjanat-actionlint/actionlint-win32-x64@1.17.0':
+    optional: true
+
+  '@kjanat/actionlint@1.17.0':
+    dependencies:
+      ansispeck: 0.4.3
+    optionalDependencies:
+      '@kjanat-actionlint/actionlint-darwin-arm64': 1.17.0
+      '@kjanat-actionlint/actionlint-darwin-x64': 1.17.0
+      '@kjanat-actionlint/actionlint-freebsd-ia32': 1.17.0
+      '@kjanat-actionlint/actionlint-freebsd-x64': 1.17.0
+      '@kjanat-actionlint/actionlint-linux-arm': 1.17.0
+      '@kjanat-actionlint/actionlint-linux-arm64': 1.17.0
+      '@kjanat-actionlint/actionlint-linux-ia32': 1.17.0
+      '@kjanat-actionlint/actionlint-linux-x64': 1.17.0
+      '@kjanat-actionlint/actionlint-win32-arm64': 1.17.0
+      '@kjanat-actionlint/actionlint-win32-ia32': 1.17.0
+      '@kjanat-actionlint/actionlint-win32-x64': 1.17.0
+
   '@mermaid-js/parser@2.0.1':
     dependencies:
       '@chevrotain/types': 13.2.0
@@ -1014,6 +1129,8 @@ snapshots:
       d3-transition: 3.0.1(d3-selection@3.0.0)
 
   ansi-regex@6.4.0: {}
+
+  ansispeck@0.4.3: {}
 
   argparse@2.0.1: {}
 
