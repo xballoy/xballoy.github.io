@@ -13,11 +13,11 @@
   },
   "homepage": "https://github.com/xballoy/xballoy.github.io#readme",
   "dependencies": {
-    "mermaid": "12.2.0"
+    "mermaid": "12.3.0"
   },
   "devDependencies": {
-    "@kjanat/actionlint": "1.17.0",
-    "markdownlint-cli": "0.49.1"
+    "@kjanat/actionlint": "1.17.1",
+    "markdownlint-cli": "0.50.0"
   },
   "scripts": {
     "build": "pnpm build:mermaid",
@@ -25,5 +25,5 @@
     "lint": "pnpm lint:markdown",
     "lint:markdown": "markdownlint **/*.md --fix --ignore node_modules --ignore vendor --ignore _site"
   },
-  "packageManager": "pnpm@12.15.0"
+  "packageManager": "pnpm@12.20.0"
 }
